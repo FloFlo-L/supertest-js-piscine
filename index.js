@@ -272,7 +272,7 @@ app.post('/s2/exercice4', (req, res) => {
     const date = new Date(req.body.date);
     const jours = req.body.jours;
 
-    if (!date || !jours) {
+    if (isNaN(date.getTime()) || isNaN(jours)) {
         return res.status(400).json({ 
             error: true,
             response: "Valeurs incorrects" 

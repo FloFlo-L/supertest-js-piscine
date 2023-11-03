@@ -525,6 +525,7 @@ describe('POST /s2/exercice2', () => {
     test('Date introuvable', (done) => {
         request(app)
             .post('/s2/exercice2')
+            .send({date: 'date'})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -552,9 +553,42 @@ describe('POST /s2/exercice2', () => {
 
 //exercice3 S2
 describe('POST /s2/exercice3', () => {
-    test('Dates introuvables', (done) => {
+    test('Date 1 et 2 invalides', (done) => {
         request(app)
             .post('/s2/exercice3')
+            .send({date: 'date', date2: "date"})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
+    test('Date 1 invalide', (done) => {
+        const date2 = new Date("2023-11-06");
+        request(app)
+            .post('/s2/exercice3')
+            .send({date: 'date', date2: date2.toISOString()})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
+    test('Date 2 invalide', (done) => {
+        const date1 = new Date("2023-11-06");
+        request(app)
+            .post('/s2/exercice3')
+            .send({date: date1.toISOString(), date2: 'date'})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -584,9 +618,10 @@ describe('POST /s2/exercice3', () => {
 
 //exercice4 S2
 describe('POST /s2/exercice4', () => {
-    test('Valeurs incorrects', (done) => {
+    test('Données incorrects', (done) => {
         request(app)
             .post('/s2/exercice4')
+            .send({date: 'date', jours: 'jours'})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -597,7 +632,6 @@ describe('POST /s2/exercice4', () => {
                 done();
             });
     });
-
 
     test('Ajouter un nombre de jours à une date', (done) => {
         const date = new Date("2023-11-01")
@@ -617,11 +651,12 @@ describe('POST /s2/exercice4', () => {
 });
 
 
-//exercice 5 s2
+// exercice 5 s2
 describe('POST /s2/exercice5', () => {
     test('Année invalide', (done) => {
         request(app)
             .post('/s2/exercice5')
+            .send({date: 'date'})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -663,6 +698,7 @@ describe('POST /s2/exercice6', () => {
     test('Date introuvable', (done) => {
         request(app)
             .post('/s2/exercice6')
+            .send({date: 'date'})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -695,6 +731,7 @@ describe('POST /s2/exercice7', () => {
     test('Date introuvable', (done) => {
         request(app)
             .post('/s2/exercice7')
+            .send({date : 'date'})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
