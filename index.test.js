@@ -27,7 +27,7 @@ describe("POST /:param", () => {
     });
 });
 
-// exerice 1 S1
+/*   EXERCICE1 S1   */
 describe("POST /s1/exercice1", () => {
     test("n1 et n2 sont null", (done) => {
         request(app)
@@ -117,7 +117,7 @@ describe("POST /s1/exercice1", () => {
     });
 });
 
-//exercice 2 s1
+/*   EXERCICE2 S1   */
 describe("POST /s1/exercice2", () => {
     test("n1 et n2 sont null", (done) => {
         request(app)
@@ -206,7 +206,7 @@ describe("POST /s1/exercice2", () => {
     });
 });
 
-// exerice 3 s1
+/*   EXERCICE3 S1   */
 describe("POST /s1/exercice3", () => {
 
     test("n1 et n2 sont null", (done) => {
@@ -297,7 +297,7 @@ describe("POST /s1/exercice3", () => {
     });
 });
 
-//exerice 4 s1
+/*   EXERCICE4 S1   */
 describe("POST /s1/exercice4", () => {
     test("n1 et n2 sont null", (done) => {
         request(app)
@@ -387,7 +387,7 @@ describe("POST /s1/exercice4", () => {
     });
 });
 
-//exerice5 s1
+/*   EXERCICE5 S1   */
 describe("POST /s1/exercice5", () => {
     test("n1 est null", (done) => {
         request(app)
@@ -448,7 +448,7 @@ describe("POST /s1/exercice5", () => {
     });
 });
 
-//exercice 6 s1
+/*   EXERCICE6 S1   */
 describe("POST /s1/exercice6", () => {
     test("n1 est null", (done) => {
         request(app)
@@ -505,7 +505,7 @@ describe("POST /s1/exercice6", () => {
     });
 });
 
-//exerice7 s1
+/*   EXERCICE7 S1   */
 describe("POST /s1/exercice7", () => {
     test("n1 est null", (done) => {
         request(app)
@@ -550,7 +550,7 @@ describe("POST /s1/exercice7", () => {
     });
 });
 
-//exercice 8 s1
+/*   EXERCICE8 S1   */
 describe("POST /s1/exercice8", () => {
     test("n1 est null", (done) => {
         request(app)
@@ -612,7 +612,7 @@ describe("POST /s1/exercice8", () => {
     });
 });
 
-//exercice 9 s1
+/*   EXERCICE9 S1   */
 describe("POST /s1/exercice9", () => {
     test("Le mot est null", (done) => {
         request(app)
@@ -670,7 +670,7 @@ describe("POST /s1/exercice9", () => {
     });
 });
 
-//exerice 10 s1
+/*   EXERCICE10 S1   */
 describe("POST /s1/exercice10", () => {
     test("n1 et n1 sont null", (done) => {
         request(app)
@@ -762,7 +762,7 @@ describe("POST /s1/exercice10", () => {
     });
 });
 
-// exercice1 S2
+/*   EXERCICE1 S2   */
 describe("POST /s2/exercice1", () => {
     test("il y a 10 ans", (done) => {
         const currentDate = new Date();
@@ -782,7 +782,7 @@ describe("POST /s2/exercice1", () => {
     });
 });
 
-//exerice2 s2
+/*   EXERCICE2 S2   */
 describe("POST /s2/exercice2", () => {
     test("Date introuvable", (done) => {
         request(app)
@@ -813,7 +813,7 @@ describe("POST /s2/exercice2", () => {
     });
 });
 
-//exercice3 S2
+/*   EXERCICE3 S2   */
 describe("POST /s2/exercice3", () => {
     test("Date 1 et 2 invalides", (done) => {
         request(app)
@@ -878,7 +878,7 @@ describe("POST /s2/exercice3", () => {
     });
 });
 
-//exercice4 S2
+/*   EXERCICE4 S2   */
 describe("POST /s2/exercice4", () => {
     test("Données incorrects", (done) => {
         request(app)
@@ -914,7 +914,7 @@ describe("POST /s2/exercice4", () => {
     });
 });
 
-// exercice 5 s2
+/*   EXERCICE5 S2   */
 describe("POST /s2/exercice5", () => {
     test("Année invalide", (done) => {
         request(app)
@@ -956,7 +956,7 @@ describe("POST /s2/exercice5", () => {
     });
 });
 
-//exercice 6 s2
+/*   EXERCICE6 S2   */
 describe("POST /s2/exercice6", () => {
     test("Date introuvable", (done) => {
         request(app)
@@ -990,7 +990,7 @@ describe("POST /s2/exercice6", () => {
     });
 });
 
-//exercice 7 S2
+/*   EXERCICE7 S2   */
 describe("POST /s2/exercice7", () => {
     test("Date introuvable", (done) => {
         request(app)
@@ -1024,7 +1024,7 @@ describe("POST /s2/exercice7", () => {
     });
 });
 
-//exercice 8 S2
+/*   EXERCICE8 S2   */
 describe("POST /s2/exercice8", () => {
     test("Données de durée invalides", (done) => {
         request(app)
@@ -1056,7 +1056,7 @@ describe("POST /s2/exercice8", () => {
     });
 });
 
-//exercice 9 s2
+/*   EXERCICE9 S2   */
 describe("POST /s2/exercice9", () => {
     test("Dates introuvables", (done) => {
         request(app)
@@ -1107,7 +1107,7 @@ describe("POST /s2/exercice9", () => {
     });
 });
 
-//exercice 10
+/*   EXERCICE10 S2   */
 describe("POST /s2/exercice10", () => {
     test("Date de naissance introuvable", (done) => {
         request(app)

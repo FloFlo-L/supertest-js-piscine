@@ -34,6 +34,7 @@ app.post('/:param', (req, res) => {
     return res.json([{ error: false, num: req.params.param }]);
 });
 
+/*   EXERCICE1 S1   */
 app.post('/s1/exercice1', (req, res) => {
     if (req.body?.n1 == undefined || req.body?.n2 == undefined) {
         return res.status(400).json({
@@ -64,6 +65,7 @@ app.post('/s1/exercice1', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE2 S1   */
 app.post('/s1/exercice2', (req, res) => {
     const n1 = req.body.n1;
     const n2 = req.body.n2;
@@ -93,7 +95,7 @@ app.post('/s1/exercice2', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
-
+/*   EXERCICE3 S1   */
 app.post('/s1/exercice3', (req, res) => {
     const n1 = req.body.n1;
     const n2 = req.body.n2;
@@ -123,7 +125,7 @@ app.post('/s1/exercice3', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
-
+/*   EXERCICE4 S1   */
 app.post('/s1/exercice4', (req, res) => {
     const n1 = req.body.n1;
     const n2 = req.body.n2;
@@ -153,7 +155,7 @@ app.post('/s1/exercice4', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
-
+/*   EXERCICE5 S1   */
 app.post('/s1/exercice5', (req, res) => {
     const n1 = req.body.n1;
 
@@ -182,6 +184,7 @@ app.post('/s1/exercice5', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE6 S1   */
 app.post('/s1/exercice6', (req, res) => {
     const n1 = req.body.n1;
 
@@ -203,6 +206,7 @@ app.post('/s1/exercice6', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE7 S1   */
 app.post('/s1/exercice7', (req, res) => {
     const n1 = req.body.n1;
 
@@ -224,6 +228,7 @@ app.post('/s1/exercice7', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE8 S1   */
 app.post('/s1/exercice8', (req, res) => {
     const n1 = req.body.n1;
 
@@ -245,6 +250,7 @@ app.post('/s1/exercice8', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE9 S1   */
 app.post('/s1/exercice9', (req, res) => {
     const n1 = req.body.n1;
 
@@ -266,6 +272,7 @@ app.post('/s1/exercice9', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE10 S1   */
 app.post('/s1/exercice10', (req, res) => {
     const n1 = req.body.n1;
     const n2 = req.body.n2;
@@ -288,10 +295,12 @@ app.post('/s1/exercice10', (req, res) => {
     return res.json([{ reponse: a }]);
 });
 
+/*   EXERCICE1 S2   */
 app.post('/s2/exercice1', (req, res) => {
     return res.json([{ reponse: dateIlYADixAns() }]);
 });
 
+/*   EXERCICE2 S2   */
 app.post('/s2/exercice2', (req, res) => {
     const date = new Date(req.body.date);
 
@@ -307,6 +316,7 @@ app.post('/s2/exercice2', (req, res) => {
     return res.json([{ reponse: formattedDate }]);
 });
 
+/*   EXERCICE3 S2   */
 app.post('/s2/exercice3', (req, res) => {
     const date1 = new Date(req.body.date1);
     const date2 = new Date(req.body.date2);
@@ -323,7 +333,7 @@ app.post('/s2/exercice3', (req, res) => {
     return res.json([{ reponse: difference }]);
 });
 
-
+/*   EXERCICE4 S2   */
 app.post('/s2/exercice4', (req, res) => {
     const date = new Date(req.body.date);
     const jours = req.body.jours;
@@ -340,6 +350,7 @@ app.post('/s2/exercice4', (req, res) => {
     return res.json([{ reponse: nouvelleDate }]);
 });
 
+/*   EXERCICE5 S2   */
 app.post('/s2/exercice5', (req, res) => {
     const annee = req.body.annee;
 
@@ -354,6 +365,7 @@ app.post('/s2/exercice5', (req, res) => {
     return res.json([{ reponse: estBissextile }]);
 });
 
+/*   EXERCICE6 S2   */
 app.post('/s2/exercice6', (req, res) => {
     const date = new Date(req.body.date);
 
@@ -369,6 +381,7 @@ app.post('/s2/exercice6', (req, res) => {
     return res.json([{ reponse: premierJour.toISOString() }]);
 });
 
+/*   EXERCICE7 S2   */
 app.post('/s2/exercice7', (req, res) => {
     const date = new Date(req.body.date);
 
@@ -384,7 +397,7 @@ app.post('/s2/exercice7', (req, res) => {
     return res.json([{ reponse: dernierJour.toISOString() }]);
 });
 
-
+/*   EXERCICE8 S2   */
 app.post('/s2/exercice8', (req, res) => {
     const heures = req.body.heures;
     const minutes = req.body.minutes;
@@ -401,7 +414,7 @@ app.post('/s2/exercice8', (req, res) => {
     return res.json([{ reponse: dureeFormatee }]);
 });
 
-
+/*   EXERCICE9 S2   */
 app.post('/s2/exercice9', (req, res) => {
     const debut1 = new Date(req.body.debut1);
     const fin1 = new Date(req.body.fin1);
@@ -421,7 +434,7 @@ app.post('/s2/exercice9', (req, res) => {
     return res.json([{ reponse: chevauchement }]);
 });
 
-
+/*   EXERCICE10 S2   */
 app.post('/s2/exercice10', (req, res) => {
     const dateNaissance = new Date(req.body.dateNaissance);
 
