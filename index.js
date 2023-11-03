@@ -45,16 +45,17 @@ app.post('/s1/exercice1', (req, res) => {
     const n1 = req.body.n1;
     const n2 = req.body.n2;
 
-    if (!n1) {
+    if (!n1 || !n2) {
         return res.status(400).json({
             error: true,
             response: "Le nombre est introuvable"
         });
     }
-    if (!n2) {
+
+    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
         return res.status(400).json({
             error: true,
-            response: "Le nombre est introuvable"
+            response: "Les valeurs ne sont pas des nombres"
         });
     }
 
@@ -64,36 +65,8 @@ app.post('/s1/exercice1', (req, res) => {
 });
 
 app.post('/s1/exercice2', (req, res) => {
-    if (req.body?.n1 == undefined || req.body?.n2 == undefined) {
-        return res.status(400).json({
-            error: true,
-            response: "Le nombre est introuvable"
-        });
-    }
-    
-    const n1 = req.body.n1
-    const n2 = req.body.n2
-
-    if (!n1) {
-        return res.status(400).json({
-            error: true,
-            response: "Le nombre est introuvable"
-        });
-    }
-    if (!n2) {
-        return res.status(400).json({
-            error: true,
-            response: "Le nombre est introuvable"
-        });
-    }
-
-    let a = soustraction(n1, n2)
-    return res.json([{ reponse: a }]);
-});
-
-app.post('/s1/exercice3', (req, res) => { 
-    const n1 = req.body.n1
-    const n2 = req.body.n2
+    const n1 = req.body.n1;
+    const n2 = req.body.n2;
 
     if (n1 == null || n2 == null) {
         return res.status(400).json({
@@ -102,133 +75,216 @@ app.post('/s1/exercice3', (req, res) => {
         });
     }
 
-    if (!n1) {
-        return res.status(400).json({
-            error: true,
-            response: "Le nombre est introuvable"
-        });
-    }
-    if (!n2) {
+    if (!n1 || !n2) {
         return res.status(400).json({
             error: true,
             response: "Le nombre est introuvable"
         });
     }
 
-    let a = multiplication(n1, n2)
+    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+        return res.status(400).json({
+            error: true,
+            response: "Les valeurs ne sont pas des nombres"
+        });
+    }
+
+    let a = soustraction(n1, n2);
     return res.json([{ reponse: a }]);
 });
+
+
+app.post('/s1/exercice3', (req, res) => {
+    const n1 = req.body.n1;
+    const n2 = req.body.n2;
+
+    if (n1 == null || n2 == null) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
+    if (!n1 || !n2) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
+    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+        return res.status(400).json({
+            error: true,
+            response: "Les valeurs ne sont pas des nombres"
+        });
+    }
+
+    let a = multiplication(n1, n2);
+    return res.json([{ reponse: a }]);
+});
+
 
 app.post('/s1/exercice4', (req, res) => {
-    const n1 = req.body.n1
-    const n2 = req.body.n2
+    const n1 = req.body.n1;
+    const n2 = req.body.n2;
 
     if (n1 == null || n2 == null) {
         return res.status(400).json({
             error: true,
-            response: "Le nombre est introuvable"
+            response: "Les nombres sont introuvables"
         });
     }
 
-    if (!n1) {
+    if (typeof n1 !== 'number' || typeof n2 !== 'number') {
         return res.status(400).json({
             error: true,
-            response: "Le nombre est introuvable"
-        });
-    }
-    if (!n2) {
-        return res.status(400).json({
-            error: true,
-            response: "Le nombre est introuvable"
+            response: "Les valeurs ne sont pas des nombres"
         });
     }
 
-    let a = division(n1, n2)
+    if (n2 === 0) {
+        return res.status(400).json({
+            error: true,
+            response: "La division par zéro n'est pas autorisée"
+        });
+    }
+
+    let a = division(n1, n2);
     return res.json([{ reponse: a }]);
 });
 
+
 app.post('/s1/exercice5', (req, res) => {
-    const n1 = req.body.n1
+    const n1 = req.body.n1;
 
     if (n1 == null) {
-        return res.status(400).json({ 
-            error: true, 
-            response: "Le nombre est introuvable" 
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
         });
     }
 
-    let a = factorielle(n1)
+    if (typeof n1 !== 'number') {
+        return res.status(400).json({
+            error: true,
+            response: "La valeur n'est pas un nombre"
+        });
+    }
+
+    if (n1 < 0) {
+        return res.status(400).json({
+            error: true,
+            response: "La factorielle n'est définie que pour les nombres positifs ou nuls"
+        });
+    }
+
+    let a = factorielle(n1);
     return res.json([{ reponse: a }]);
 });
 
 app.post('/s1/exercice6', (req, res) => {
-    const n1 = req.body.n1
+    const n1 = req.body.n1;
 
     if (n1 == null) {
-        return res.status(400).json({ 
-            error: true, 
-            response: "Le nombre est introuvable" 
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
         });
     }
 
-    let a = estPairOuImpair(n1)
+    if (typeof n1 !== 'number') {
+        return res.status(400).json({
+            error: true,
+            response: "La valeur n'est pas un nombre"
+        });
+    }
+
+    let a = estPairOuImpair(n1);
     return res.json([{ reponse: a }]);
 });
 
 app.post('/s1/exercice7', (req, res) => {
-    const n1 = req.body.n1
+    const n1 = req.body.n1;
 
     if (n1 == null) {
-        return res.status(400).json({ 
-            error: true, 
-            response: "Le nombre est introuvable" 
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
         });
     }
 
-    let a = celsiusEnFahrenheit(n1)
+    if (typeof n1 !== 'number') {
+        return res.status(400).json({
+            error: true,
+            response: "La valeur n'est pas un nombre"
+        });
+    }
+
+    let a = celsiusEnFahrenheit(n1);
     return res.json([{ reponse: a }]);
 });
 
 app.post('/s1/exercice8', (req, res) => {
-    const n1 = req.body.n1
+    const n1 = req.body.n1;
 
     if (n1 == null) {
-        return res.status(400).json({ 
-            error: true, 
-            response: "Le nombre est introuvable" 
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
         });
     }
 
-    let a = aireCercle(n1)
+    if (typeof n1 !== 'number' || n1 <= 0) {
+        return res.status(400).json({
+            error: true,
+            response: "La valeur doit être un nombre positif"
+        });
+    }
+
+    let a = aireCercle(n1);
     return res.json([{ reponse: a }]);
 });
 
 app.post('/s1/exercice9', (req, res) => {
-    const n1 = req.body.n1
+    const n1 = req.body.n1;
 
     if (n1 == null) {
-        return res.status(400).json({ 
-            error: true, 
-            response: "Le mot est introuvable" 
+        return res.status(400).json({
+            error: true,
+            response: "Le mot est introuvable"
         });
     }
 
-    let a = estPalindrome(n1)
+    if (typeof n1 !== 'string' || n1.trim() === '') {
+        return res.status(400).json({
+            error: true,
+            response: "Le mot doit être une chaîne de caractères non vide"
+        });
+    }
+
+    let a = estPalindrome(n1);
     return res.json([{ reponse: a }]);
 });
 
 app.post('/s1/exercice10', (req, res) => {
-    const n1 = req.body.n1
-    const n2 = req.body.n2
+    const n1 = req.body.n1;
+    const n2 = req.body.n2;
 
     if (n1 == null || n2 == null) {
-        return res.status(400).json({ 
-            error: true, 
-            response: "Les nombres sont introuvables" 
+        return res.status(400).json({
+            error: true,
+            response: "Les nombres sont introuvables"
         });
     }
-    
-    let a = pgcd(n1, n2)
+
+    if (typeof n1 !== 'number' || typeof n2 !== 'number' || isNaN(n1) || isNaN(n2)) {
+        return res.status(400).json({
+            error: true,
+            response: "Les nombres doivent être des valeurs numériques valides"
+        });
+    }
+
+    let a = pgcd(n1, n2);
     return res.json([{ reponse: a }]);
 });
 
@@ -333,7 +389,7 @@ app.post('/s2/exercice8', (req, res) => {
     const heures = req.body.heures;
     const minutes = req.body.minutes;
 
-    if (isNaN(heures) || isNaN(minutes)) {
+    if (typeof heures !== 'number' || typeof minutes !== 'number' || isNaN(heures) || isNaN(minutes)) {
         return res.status(400).json({ 
             error: true,
             response: "Données de durée invalides" 
