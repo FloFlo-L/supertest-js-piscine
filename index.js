@@ -36,7 +36,7 @@ app.post('/:param', (req, res) => {
 
 /*   EXERCICE1 S1   */
 app.post('/s1/exercice1', (req, res) => {
-    if (req.body?.n1 == undefined || req.body?.n2 == undefined) {
+    if (req.body?.n1 === undefined || req.body?.n2 === undefined) {
         return res.status(400).json({
             error: true,
             response: "Le nombre est introuvable"
@@ -67,15 +67,15 @@ app.post('/s1/exercice1', (req, res) => {
 
 /*   EXERCICE2 S1   */
 app.post('/s1/exercice2', (req, res) => {
-    const n1 = req.body.n1;
-    const n2 = req.body.n2;
-
-    if (n1 == null || n2 == null) {
+    if (req.body?.n1 === undefined || req.body?.n2 === undefined) {
         return res.status(400).json({
             error: true,
             response: "Le nombre est introuvable"
         });
     }
+    
+    const n1 = req.body.n1;
+    const n2 = req.body.n2;
 
     if (!n1 || !n2) {
         return res.status(400).json({
@@ -97,6 +97,13 @@ app.post('/s1/exercice2', (req, res) => {
 
 /*   EXERCICE3 S1   */
 app.post('/s1/exercice3', (req, res) => {
+    if (req.body?.n1 === undefined || req.body?.n2 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
     const n2 = req.body.n2;
 
@@ -127,6 +134,13 @@ app.post('/s1/exercice3', (req, res) => {
 
 /*   EXERCICE4 S1   */
 app.post('/s1/exercice4', (req, res) => {
+    if (req.body?.n1 === undefined || req.body?.n2 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
     const n2 = req.body.n2;
 
@@ -157,6 +171,13 @@ app.post('/s1/exercice4', (req, res) => {
 
 /*   EXERCICE5 S1   */
 app.post('/s1/exercice5', (req, res) => {
+    if (req.body?.n1 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
 
     if (n1 == null) {
@@ -186,6 +207,13 @@ app.post('/s1/exercice5', (req, res) => {
 
 /*   EXERCICE6 S1   */
 app.post('/s1/exercice6', (req, res) => {
+    if (req.body?.n1 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
 
     if (n1 == null) {
@@ -208,6 +236,13 @@ app.post('/s1/exercice6', (req, res) => {
 
 /*   EXERCICE7 S1   */
 app.post('/s1/exercice7', (req, res) => {
+    if (req.body?.n1 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
 
     if (n1 == null) {
@@ -230,6 +265,13 @@ app.post('/s1/exercice7', (req, res) => {
 
 /*   EXERCICE8 S1   */
 app.post('/s1/exercice8', (req, res) => {
+    if (req.body?.n1 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
 
     if (n1 == null) {
@@ -252,6 +294,13 @@ app.post('/s1/exercice8', (req, res) => {
 
 /*   EXERCICE9 S1   */
 app.post('/s1/exercice9', (req, res) => {
+    if (req.body?.n1 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
 
     if (n1 == null) {
@@ -274,6 +323,13 @@ app.post('/s1/exercice9', (req, res) => {
 
 /*   EXERCICE10 S1   */
 app.post('/s1/exercice10', (req, res) => {
+    if (req.body?.n1 === undefined || req.body?.n2 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Le nombre est introuvable"
+        });
+    }
+
     const n1 = req.body.n1;
     const n2 = req.body.n2;
 
@@ -302,7 +358,15 @@ app.post('/s2/exercice1', (req, res) => {
 
 /*   EXERCICE2 S2   */
 app.post('/s2/exercice2', (req, res) => {
+    if (req.body?.date === undefined || req.body.date === null) {
+        return res.status(400).json({
+            error: true,
+            response: "Date introuvable"
+        });
+    }
+
     const date = new Date(req.body.date);
+    
 
     if (isNaN(date.getTime())) {
         return res.status(400).json({ 
@@ -318,6 +382,13 @@ app.post('/s2/exercice2', (req, res) => {
 
 /*   EXERCICE3 S2   */
 app.post('/s2/exercice3', (req, res) => {
+    if (req.body?.date1 === undefined || req.body?.date2 === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Date introuvable"
+        });
+    }
+
     const date1 = new Date(req.body.date1);
     const date2 = new Date(req.body.date2);
 
@@ -335,6 +406,12 @@ app.post('/s2/exercice3', (req, res) => {
 
 /*   EXERCICE4 S2   */
 app.post('/s2/exercice4', (req, res) => {
+    if (req.body?.date === undefined || req.body?.jours === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Valeurs incorrects"
+        });
+    }
     const date = new Date(req.body.date);
     const jours = req.body.jours;
 
@@ -367,6 +444,13 @@ app.post('/s2/exercice5', (req, res) => {
 
 /*   EXERCICE6 S2   */
 app.post('/s2/exercice6', (req, res) => {
+    if (req.body?.date === undefined || req.body.date === null) {
+        return res.status(400).json({
+            error: true,
+            response: "Date introuvable"
+        });
+    }
+
     const date = new Date(req.body.date);
 
     if (isNaN(date.getTime())) {
@@ -383,6 +467,13 @@ app.post('/s2/exercice6', (req, res) => {
 
 /*   EXERCICE7 S2   */
 app.post('/s2/exercice7', (req, res) => {
+    if (req.body?.date === undefined || req.body.date === null) {
+        return res.status(400).json({
+            error: true,
+            response: "Date introuvable"
+        });
+    }
+
     const date = new Date(req.body.date);
 
     if (isNaN(date.getTime())) {
@@ -399,6 +490,12 @@ app.post('/s2/exercice7', (req, res) => {
 
 /*   EXERCICE8 S2   */
 app.post('/s2/exercice8', (req, res) => {
+    if (req.body?.heures === undefined || req.body?.minutes === undefined) {
+        return res.status(400).json({
+            error: true,
+            response: "Données de durée invalides"
+        });
+    }
     const heures = req.body.heures;
     const minutes = req.body.minutes;
 
@@ -416,10 +513,24 @@ app.post('/s2/exercice8', (req, res) => {
 
 /*   EXERCICE9 S2   */
 app.post('/s2/exercice9', (req, res) => {
+    if (req.body?.debut1 === undefined || req.body.fin1 === null || req.body?.debut2 === undefined || req.body.fin2 === null) {
+        return res.status(400).json({
+            error: true,
+            response: "Dates introuvables"
+        });
+    }
+
     const debut1 = new Date(req.body.debut1);
     const fin1 = new Date(req.body.fin1);
     const debut2 = new Date(req.body.debut2);
     const fin2 = new Date(req.body.fin2);
+
+    if (debut1 === null || fin1 === null || debut2 === undefined || fin2 === null) {
+        return res.status(400).json({
+            error: true,
+            response: "Dates introuvables"
+        });
+    }
 
     if ( isNaN(new Date(debut1).getTime()) || isNaN(new Date(fin1).getTime()) ||
         isNaN(new Date(debut2).getTime()) || isNaN(new Date(fin2).getTime())) {
@@ -436,6 +547,12 @@ app.post('/s2/exercice9', (req, res) => {
 
 /*   EXERCICE10 S2   */
 app.post('/s2/exercice10', (req, res) => {
+    if (req.body?.dateNaissance === undefined || req.body?.dateNaissance === null) {
+        return res.status(400).json({
+            error: true,
+            response: "Date de naissance introuvable"
+        });
+    }
     const dateNaissance = new Date(req.body.dateNaissance);
 
     if (isNaN(dateNaissance.getTime())) {

@@ -28,97 +28,126 @@ describe("POST /:param", () => {
 });
 
 /*   EXERCICE1 S1   */
-describe("POST /s1/exercice1", () => {
-    test("n1 et n2 sont null", (done) => {
+describe('POST /s1/exercice1', () => {
+    test('Paramètres manquants (undefined)', (done) => {
         request(app)
-            .post("/s1/exercice1")
+            .post('/s1/exercice1')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
+    test('n1 et n2 sont null', (done) => {
+        request(app)
+            .post('/s1/exercice1')
             .send({ n1: null, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
                 expect(response.body).toEqual({
                     error: true,
-                    response: "Le nombre est introuvable",
+                    response: "Le nombre est introuvable"
                 });
                 done();
             });
     });
 
-    test("n1 est null", (done) => {
+    test('n1 null', (done) => {
         request(app)
-            .post("/s1/exercice1")
+            .post('/s1/exercice1')
             .send({ n1: null, n2: 5 })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
                 expect(response.body).toEqual({
                     error: true,
-                    response: "Le nombre est introuvable",
+                    response: "Le nombre est introuvable"
                 });
                 done();
             });
     });
 
-    test("n2 est null", (done) => {
+    test('n2 null', (done) => {
         request(app)
-            .post("/s1/exercice1")
-            .send({ n1: 10, n2: null })
+            .post('/s1/exercice1')
+            .send({ n1: 5, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
                 expect(response.body).toEqual({
                     error: true,
-                    response: "Le nombre est introuvable",
+                    response: "Le nombre est introuvable"
                 });
                 done();
             });
     });
 
-    test("n1 est une chaine de caractère", (done) => {
+    test('n1 est une chaine de caractere', (done) => {
         request(app)
-            .post("/s1/exercice1")
-            .send({ n1: "abc", n2: 5 })
+            .post('/s1/exercice1')
+            .send({ n1: "a", n2: 5 })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
                 expect(response.body).toEqual({
                     error: true,
-                    response: "Les valeurs ne sont pas des nombres",
+                    response: "Les valeurs ne sont pas des nombres"
                 });
                 done();
             });
     });
 
-    test("n2 est une chaine de caractère", (done) => {
+    test('n2 est une chaine de caractere', (done) => {
         request(app)
-            .post("/s1/exercice1")
-            .send({ n1: 5, n2: 'abc' })
+            .post('/s1/exercice1')
+            .send({ n1: 5, n2: 'a' })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
                 expect(response.body).toEqual({
                     error: true,
-                    response: "Les valeurs ne sont pas des nombres",
+                    response: "Les valeurs ne sont pas des nombres"
                 });
                 done();
             });
     });
 
-    test("Calcul de l'addition", (done) => {
+    test('Addition de deux nombres', (done) => {
         request(app)
-            .post("/s1/exercice1")
-            .send({ n1: 10, n2: 5 })
+            .post('/s1/exercice1')
+            .send({ n1: 3, n2: 5 })
             .expect(200)
             .end((err, response) => {
                 if (err) return done(err);
-                expect(response.body).toEqual([{ reponse: 15 }]);
+                expect(response.body).toEqual([{ reponse: 8 }]);
                 done();
             });
     });
 });
 
+
 /*   EXERCICE2 S1   */
 describe("POST /s1/exercice2", () => {
+    test('Paramètres manquants (undefined)', (done) => {
+        request(app)
+            .post('/s1/exercice2')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
     test("n1 et n2 sont null", (done) => {
         request(app)
             .post("/s1/exercice2")
@@ -133,6 +162,7 @@ describe("POST /s1/exercice2", () => {
                 done();
             });
     });
+    
     test("n1 est null", (done) => {
         request(app)
             .post("/s1/exercice2")
@@ -151,7 +181,7 @@ describe("POST /s1/exercice2", () => {
     test("n2 est null", (done) => {
         request(app)
             .post("/s1/exercice2")
-            .send({ n1: 10, n2: null })
+            .send({ n1: 5, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -208,11 +238,24 @@ describe("POST /s1/exercice2", () => {
 
 /*   EXERCICE3 S1   */
 describe("POST /s1/exercice3", () => {
+    test('Paramètres manquants (undefined)', (done) => {
+        request(app)
+            .post('/s1/exercice3')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
 
     test("n1 et n2 sont null", (done) => {
         request(app)
             .post("/s1/exercice3")
-            .send({ n1: null, n2: 5 })
+            .send({ n1: null, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -242,7 +285,7 @@ describe("POST /s1/exercice3", () => {
     test("n2 est null", (done) => {
         request(app)
             .post("/s1/exercice3")
-            .send({ n1: 10, n2: null })
+            .send({ n1: 5, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -272,7 +315,7 @@ describe("POST /s1/exercice3", () => {
     test("n2 est une chaine de caractère", (done) => {
         request(app)
             .post("/s1/exercice3")
-            .send({ n1: 5, n2: "abc" })
+            .send({ n1: 5, n2: 'abc' })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -299,10 +342,24 @@ describe("POST /s1/exercice3", () => {
 
 /*   EXERCICE4 S1   */
 describe("POST /s1/exercice4", () => {
+    test('Paramètres manquants (undefined)', (done) => {
+        request(app)
+            .post('/s1/exercice4')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
     test("n1 et n2 sont null", (done) => {
         request(app)
             .post("/s1/exercice4")
-            .send({ n1: null, n2: 5 })
+            .send({ n1: null, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -318,6 +375,21 @@ describe("POST /s1/exercice4", () => {
         request(app)
             .post("/s1/exercice4")
             .send({ n1: null, n2: 5 })
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Les nombres sont introuvables",
+                });
+                done();
+            });
+    });
+
+    test("n2 est null", (done) => {
+        request(app)
+            .post("/s1/exercice4")
+            .send({ n1: 5, n2: null })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -389,16 +461,30 @@ describe("POST /s1/exercice4", () => {
 
 /*   EXERCICE5 S1   */
 describe("POST /s1/exercice5", () => {
-    test("n1 est null", (done) => {
+    test('n1 manquant (undefined)', (done) => {
         request(app)
-            .post("/s1/exercice5")
-            .send({ n1: null })
+            .post('/s1/exercice5')
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
                 expect(response.body).toEqual({
                     error: true,
-                    response: "Le nombre est introuvable",
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
+    test('n1 est null', (done) => {
+        request(app)
+            .post('/s1/exercice5')
+            .expect(400)
+            .send({n1: null})
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
                 });
                 done();
             });
@@ -450,6 +536,20 @@ describe("POST /s1/exercice5", () => {
 
 /*   EXERCICE6 S1   */
 describe("POST /s1/exercice6", () => {
+    test('n1 manquant (undefined)', (done) => {
+        request(app)
+            .post('/s1/exercice6')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
     test("n1 est null", (done) => {
         request(app)
             .post("/s1/exercice6")
@@ -507,6 +607,20 @@ describe("POST /s1/exercice6", () => {
 
 /*   EXERCICE7 S1   */
 describe("POST /s1/exercice7", () => {
+    test('n1 manquant (undefined)', (done) => {
+        request(app)
+            .post('/s1/exercice7')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
     test("n1 est null", (done) => {
         request(app)
             .post("/s1/exercice7")
@@ -552,6 +666,20 @@ describe("POST /s1/exercice7", () => {
 
 /*   EXERCICE8 S1   */
 describe("POST /s1/exercice8", () => {
+    test("n1 est manquant (undefinded)", (done) => {
+        request(app)
+            .post("/s1/exercice8")
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable",
+                });
+                done();
+            });
+    });
+
     test("n1 est null", (done) => {
         request(app)
             .post("/s1/exercice8")
@@ -614,6 +742,21 @@ describe("POST /s1/exercice8", () => {
 
 /*   EXERCICE9 S1   */
 describe("POST /s1/exercice9", () => {
+    test("Le mot est manquant (undefinded)", (done) => {
+        request(app)
+            .post("/s1/exercice9")
+            .send({ n1: null })
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le mot est introuvable",
+                });
+                done();
+            });
+    });
+
     test("Le mot est null", (done) => {
         request(app)
             .post("/s1/exercice9")
@@ -629,7 +772,7 @@ describe("POST /s1/exercice9", () => {
             });
     });
 
-    test("chaîne de caractères non vide", (done) => {
+    test("le mot est un nombre", (done) => {
         request(app)
             .post("/s1/exercice9")
             .send({ n1: 12345 })
@@ -657,7 +800,7 @@ describe("POST /s1/exercice9", () => {
             });
     });
 
-    test("le mot n'est un palindrome", (done) => {
+    test("le mot n'est pas un palindrome", (done) => {
         request(app)
             .post("/s1/exercice9")
             .send({ n1: "hello" })
@@ -672,7 +815,21 @@ describe("POST /s1/exercice9", () => {
 
 /*   EXERCICE10 S1   */
 describe("POST /s1/exercice10", () => {
-    test("n1 et n1 sont null", (done) => {
+    test('Paramètres manquants (undefined)', (done) => {
+        request(app)
+            .post('/s1/exercice10')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Le nombre est introuvable"
+                });
+                done();
+            });
+    });
+
+    test("n1 et n2 sont null", (done) => {
         request(app)
             .post("/s1/exercice10")
             .send({ n1: null, n2: null })
@@ -784,7 +941,36 @@ describe("POST /s2/exercice1", () => {
 
 /*   EXERCICE2 S2   */
 describe("POST /s2/exercice2", () => {
-    test("Date introuvable", (done) => {
+    test('Date est manquante', (done) => {
+        request(app)
+            .post('/s2/exercice2')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
+    test('Date est null', (done) => {
+        request(app)
+            .post('/s2/exercice2')
+            .send({date: null})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
+    test("Date mauvais format", (done) => {
         request(app)
             .post("/s2/exercice2")
             .send({ date: "date" })
@@ -815,6 +1001,20 @@ describe("POST /s2/exercice2", () => {
 
 /*   EXERCICE3 S2   */
 describe("POST /s2/exercice3", () => {
+    test("Paramètres manquants (undefined)", (done) => {
+        request(app)
+            .post("/s2/exercice3")
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Date introuvable",
+                });
+                done();
+            });
+    });
+
     test("Date 1 et 2 invalides", (done) => {
         request(app)
             .post("/s2/exercice3")
@@ -880,6 +1080,20 @@ describe("POST /s2/exercice3", () => {
 
 /*   EXERCICE4 S2   */
 describe("POST /s2/exercice4", () => {
+    test("Paramètres manquants (undefined)", (done) => {
+        request(app)
+            .post("/s2/exercice4")
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Valeurs incorrects",
+                });
+                done();
+            });
+    });
+
     test("Données incorrects", (done) => {
         request(app)
             .post("/s2/exercice4")
@@ -958,6 +1172,35 @@ describe("POST /s2/exercice5", () => {
 
 /*   EXERCICE6 S2   */
 describe("POST /s2/exercice6", () => {
+    test('Date est manquante', (done) => {
+        request(app)
+            .post('/s2/exercice6')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
+    test('Date est null', (done) => {
+        request(app)
+            .post('/s2/exercice6')
+            .send({date: null})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
     test("Date introuvable", (done) => {
         request(app)
             .post("/s2/exercice6")
@@ -992,6 +1235,34 @@ describe("POST /s2/exercice6", () => {
 
 /*   EXERCICE7 S2   */
 describe("POST /s2/exercice7", () => {
+    test('Date est manquante', (done) => {
+        request(app)
+            .post('/s2/exercice7')
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
+
+    test('Date est null', (done) => {
+        request(app)
+            .post('/s2/exercice7')
+            .send({date: null})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({ 
+                    error: true, 
+                    response: "Date introuvable" 
+                });
+                done();
+            });
+    });
     test("Date introuvable", (done) => {
         request(app)
             .post("/s2/exercice7")
@@ -1026,6 +1297,20 @@ describe("POST /s2/exercice7", () => {
 
 /*   EXERCICE8 S2   */
 describe("POST /s2/exercice8", () => {
+    test("Paramètres manquants (undefined)", (done) => {
+        request(app)
+            .post("/s2/exercice8")
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Données de durée invalides",
+                });
+                done();
+            });
+    });
+
     test("Données de durée invalides", (done) => {
         request(app)
             .post("/s2/exercice8")
@@ -1058,9 +1343,69 @@ describe("POST /s2/exercice8", () => {
 
 /*   EXERCICE9 S2   */
 describe("POST /s2/exercice9", () => {
-    test("Dates introuvables", (done) => {
+    test("Paramètres manquants (undefined)", (done) => {
         request(app)
             .post("/s2/exercice9")
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Dates introuvables",
+                });
+                done();
+            });
+    });
+
+    test("Les dates sont null", (done) => {
+        request(app)
+            .post("/s2/exercice9")
+            .send({ debut1: null, fin1: null, debut2: null, fin2: null})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Dates introuvables",
+                });
+                done();
+            });
+    });
+
+    test("Debut1 et Fin1 sont null", (done) => {
+        request(app)
+            .post("/s2/exercice9")
+            .send({ debut1: null, fin1: null, debut2: "2023-02-01", fin2: "2023-03-31"})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Dates introuvables",
+                });
+                done();
+            });
+    });
+
+    test("Debut2 et Fin2 sont null", (done) => {
+        request(app)
+            .post("/s2/exercice9")
+            .send({ debut1: "2023-01-01", fin1: "2023-02-28", debut2: null, fin2: null})
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Dates introuvables",
+                });
+                done();
+            });
+    });
+
+    test("Les dates sont au mauvais format", (done) => {
+        request(app)
+            .post("/s2/exercice9")
+            .send({ debut1: "date", fin1: "date", debut2: "date", fin2: "date"})
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
@@ -1109,9 +1454,39 @@ describe("POST /s2/exercice9", () => {
 
 /*   EXERCICE10 S2   */
 describe("POST /s2/exercice10", () => {
-    test("Date de naissance introuvable", (done) => {
+    test("Paramètre manquant (undefined)", (done) => {
         request(app)
             .post("/s2/exercice10")
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Date de naissance introuvable",
+                });
+                done();
+            });
+    });
+
+    test("Date de naissance est null", (done) => {
+        request(app)
+            .post("/s2/exercice10")
+            .send({ dateNaissance: null })
+            .expect(400)
+            .end((err, response) => {
+                if (err) return done(err);
+                expect(response.body).toEqual({
+                    error: true,
+                    response: "Date de naissance introuvable",
+                });
+                done();
+            });
+    });
+
+    test("Date de naissance mauvais format", (done) => {
+        request(app)
+            .post("/s2/exercice10")
+            .send({ dateNaissance: 'date' })
             .expect(400)
             .end((err, response) => {
                 if (err) return done(err);
